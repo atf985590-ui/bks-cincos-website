@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKS Cincos - منصة الاستثمار الذكية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --secondary: #b71c1c;
+            --accent: #ff6b6b;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --gold: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        .app-container {
+            max-width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0;
+            overflow: hidden;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            animation: bannerAnimation 10s infinite;
+            font-size: 18px;
+        }
+        
+        @keyframes bannerAnimation {
+            0%, 100% { background: linear-gradient(135deg, var(--accent), var(--primary)); }
+            50% { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: #f8f9fa;
+        }
+        
+        .partner-logo {
+            margin: 5px 10px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--primary);
+            font-size: 24px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        
+        .plans-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-card.popular {
+            border-color: var(--gold);
+            position: relative;
+            transform: scale(1.05);
+        }
+        
+        .plan-card.popular::before {
+            content: "الأكثر شيوعاً";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .plan-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li i {
+            color: var(--success);
+            margin-left: 10px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .payment-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .payment-address {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+            margin: 15px 0;
+            border: 2px dashed var(--primary);
+        }
+        
+        .withdrawal-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .withdrawal-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .withdrawal-method {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            width: 140px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .withdrawal-method i {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .user-stats {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .plan-card {
+                max-width: 100%;
+            }
+            
+            .plan-card.popular {
+                transform: scale(1);
+            }
+            
+            .language-switcher {
+                position: static;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- البنر الإعلاني المتحرك -->
+        <div class="banner">
+            🎉 BKS Cincos - استثمر بذكاء وانمو بسرعة 🎉
+        </div>
+        
+        <!-- شعارات الشركاء -->
+        <div class="partner-logos">
+            <span class="partner-logo">🏢 Huawei</span>
+            <span class="partner-logo">🏢 Alibaba</span>
+            <span class="partner-logo">🏢 Tencent</span>
+            <span class="partner-logo">🏢 Xiaomi</span>
+            <span class="partner-logo">🏢 BYD</span>
+        </div>
+        
+        <div class="header">
+            <div class="language-switcher">
+                <button class="lang-btn" onclick="changeLanguage('ar')">العربية</button>
+                <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+            </div>
+            <h1>BKS Cincos</h1>
+            <p>منصة الاستثمار الذكية - أرباح يومية مضمونة</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- إحصائيات المستخدم -->
+            <div class="user-stats">
+                <h2>إحصائيات محفظتك</h2>
+                <div class="stat-value">0.00 USDT</div>
+                <p>رصيدك الحالي</p>
+            </div>
+            
+            <!-- قسم التبويبات -->
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab('plans')">خطط الاستثمار</div>
+                    <div class="tab" onclick="openTab('payment')">طريقة الدفع</div>
+                    <div class="tab" onclick="openTab('withdrawal')">طرق السحب</div>
+                    <div class="tab" onclick="openTab('contact')">التواصل</div>
+                </div>
+                
+                <!-- تبويب الخطط -->
+                <div id="plans" class="tab-content active">
+                    <h2 class="section-title">خطط الاستثمار</h2>
+                    <div class="plans-container">
+                        <!-- الخطة 1 -->
+                        <div class="plan-card">
+                            <h3>الخطة الأساسية</h3>
+                            <div class="plan-price">5 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 0.50 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 0.25 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 5%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني متاح</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(5)">اشترك الآن</button>
+                        </div>
+                        
+                        <!-- الخطة 2 -->
+                        <div class="plan-card">
+                            <h3>الخطة المتوسطة</h3>
+                            <div class="plan-price">8 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 1.00 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 0.50 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 7%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني متاح</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(8)">اشترك الآن</button>
+                        </div>
+                        
+                        <!-- الخطة 3 -->
+                        <div class="plan-card popular">
+                            <h3>الخطة الذهبية</h3>
+                            <div class="plan-price">12 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 1.80 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 0.90 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 10%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني مميز</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(12)">اشترك الآن</button>
+                        </div>
+                        
+                        <!-- الخطة 4 -->
+                        <div class="plan-card">
+                            <h3>الخطة المميزة</h3>
+                            <div class="plan-price">14 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 2.20 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 1.10 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 12%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني مميز</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(14)">اشترك الآن</button>
+                        </div>
+                        
+                        <!-- الخطة 5 -->
+                        <div class="plan-card">
+                            <h3>الخطة المتقدمة</h3>
+                            <div class="plan-price">18 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 3.00 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 1.50 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 15%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني متقدم</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(18)">اشترك الآن</button>
+                        </div>
+                        
+                        <!-- الخطة 6 -->
+                        <div class="plan-card">
+                            <h3>الخطة VIP</h3>
+                            <div class="plan-price">22 USDT</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> ربح يومي: 4.00 USDT</li>
+                                <li><i class="fas fa-check-circle"></i> أرباح إعلانات: 2.00 USDT/يوم</li>
+                                <li><i class="fas fa-check-circle"></i> عمولة دعوة: 20%</li>
+                                <li><i class="fas fa-check-circle"></i> دعم فني VIP</li>
+                            </ul>
+                            <button class="btn" onclick="selectPlan(22)">اشترك الآن</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تبويب الدفع -->
+                <div id="payment" class="tab-content">
+                    <h2 class="section-title">طريقة الدفع</h2>
+                    <div class="payment-section">
+                        <p>للاستثمار في إحدى خططنا، يرجى إرسال المبلغ إلى العنوان التالي:</p>
+                        
+                        <div class="payment-address">
+                            TLsGeELYfexmuhK6g3TVQ44AAt5kxZN3gb
+                        </div>
+                        
+                        <button class="btn" onclick="copyAddress()">نسخ العنوان</button>
+                        
+                        <p>بعد إتمام الدفع، أرسل إثبات الدفع إلى:</p>
+                        <p>📧 البريد الإلكتروني: support@bkscincos.com</p>
+                        <p>📞 التلجرام: @BKSSupport</p>
+                        
+                        <p>سيتم تفعيل حسابك خلال 1-3 دقائق بعد التحقق من الدفع.</p>
+                    </div>
+                </div>
+                
+                <!-- تبويب السحب -->
+                <div id="withdrawal" class="tab-content">
+                    <h2 class="section-title">طرق السحب</h2>
+                    <div class="withdrawal-section">
+                        <div class="withdrawal-methods">
+                            <div class="withdrawal-method">
+                                <i class="fab fa-paypal"></i>
+                                <p>PayPal</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <p>Western Union</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fas fa-university"></i>
+                                <p>حوالة بنكية</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fab fa-bitcoin"></i>
+                                <p>Bitcoin</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fas fa-coins"></i>
+                                <p>USDT</p>
+                            </div>
+                        </div>
+                        
+                        <p>يمكنك سحب أرباحك عبر أي من الطرق المذكورة أعلاه. الحد الأدنى للسحب هو 10 USDT.</p>
+                        <p>مدة معالجة طلبات السحب: 24-48 ساعة.</p>
+                    </div>
+                </div>
+                
+                <!-- تبويب التواصل -->
+                <div id="contact" class="tab-content">
+                    <h2 class="section-title">التواصل معنا</h2>
+                    <div class="payment-section">
+                        <p>لأي استفسارات أو مساعدة، يمكنك التواصل معنا عبر:</p>
+                        
+                        <div class="withdrawal-methods">
+                            <div class="withdrawal-method">
+                                <i class="fab fa-telegram"></i>
+                                <p>@BKSSupport</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fas fa-envelope"></i>
+                                <p>support@bkscincos.com</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fas fa-phone"></i>
+                                <p>+1234567890</p>
+                            </div>
+                            
+                            <div class="withdrawal-method">
+                                <i class="fab fa-whatsapp"></i>
+                                <p>WhatsApp</p>
+                            </div>
+                        </div>
+                        
+                        <p>فريق الدعم متاح على مدار الساعة طوال أيام الأسبوع لمساعدتك.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>BKS Cincos &copy; 2023. جميع الحقوق محفوظة.</p>
+            <p>الشروط والأحكام | سياسة الخصوصية</p>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">تم نسخ العنوان بنجاح!</div>
+
+    <script>
+        // فتح التبويبات
+        function openTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const tabButtons = document.querySelectorAll('.tab');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // تحديد الخطة
+        function selectPlan(planAmount) {
+            const address = "TLsGeELYfexmuhK6g3TVQ44AAt5kxZN3gb";
+            const message = `للاستثمار في الخطة بقيمة ${planAmount} USDT، يرجى إرسال المبلغ إلى العنوان التالي:\n\n${address}\n\nبعد الدفع، أرسل إثبات الدفع إلى @BKSSupport ليتم تفعيل حسابك.`;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(address).then(() => {
+                    showNotification("تم نسخ عنوان المحفظة");
+                });
+            }
+            
+            alert(message);
+        }
+        
+        // نسخ العنوان
+        function copyAddress() {
+            const address = "TLsGeELYfexmuhK6g3TVQ44AAt5kxZN3gb";
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(address).then(() => {
+                    showNotification("تم نسخ العنوان بنجاح!");
+                });
+            } else {
+                // طريقة بديلة للمتصفحات التي لا تدعم clipboard API
+                const tempInput = document.createElement("input");
+                tempInput.value = address;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                showNotification("تم نسخ العنوان بنجاح!");
+            }
+        }
+        
+        // إظهار الإشعار
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.classList.add("show");
+            
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+        
+        // تغيير اللغة
+        function changeLanguage(lang) {
+            alert("ميزة تغيير اللغة قيد التطوير حالياً");
+            // يمكنك إضافة المزيد من الوظائف لتغيير اللغة هنا
+        }
+    </script>
+</body>
+</html>
